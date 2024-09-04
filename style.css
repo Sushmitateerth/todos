@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: rgb(143, 27, 27);
+  text-align: center;
+  padding-top: 15px;
+  font-size: 70px;
+  padding-bottom: 20px;
+}
+
+ul {
+  overflow-y: auto;
+  list-style-type: none;
+  line-height: normal;
+}
+
+#enter-text {
+  border: solid 2px rgb(174, 169, 169);
+  height: 80px;
+  width: 500px;
+  text-align: center;
+  font-size: 30px;
+  font-style: italic;
+  vertical-align: middle;
+}
+
+
+span {
+  padding-left: 15px;
+  vertical-align: middle;
+}
+
+span.completed {
+  text-decoration: line-through;
+}
+
+i {
+  vertical-align: middle;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  overflow-wrap:anywhere;
+  border-bottom: solid 2px rgb(174, 169, 169);
+  border-right: solid 2px rgb(174, 169, 169);
+  border-left: solid 2px rgb(174, 169, 169);
+  min-height: 60px;
+  width: 500px;
+  padding: 10px;
+  font-size: 30px;
+}
+
+.input-checkbox {
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+}
+
+.filters {
+  border-bottom: solid 2px rgb(174, 169, 169);
+  border-right: solid 2px rgb(174, 169, 169);
+  border-left: solid 2px rgb(174, 169, 169);
+  height: 40px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#all, #active, #completed {
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+#all:active, #active:active, #completed:active {
+  color: rgb(82, 81, 81);
+  color: rgb(229, 116, 116);
+}
+
+
+
