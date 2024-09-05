@@ -4,8 +4,6 @@
  * ]
  */
 const todos = []
-const completedTodos = []
-const activeTodos = []
 
 function addTodo(text) {
   const todo = { id: todos.length, text: text, completed: false, removed: false }
@@ -45,7 +43,7 @@ function filterTodos(filter) {
   })
 }
 
-const html = (todo) => `
+const todoHtml = (todo) => `
 <li id=${todo.id} class='todo-item'>
   <input ${todo.completed ? 'checked' : ''} id='checkbox' type='checkbox' class='input-checkbox' />
   <span class="${todo.completed ? 'completed' : ''}">${todo.text}</span>
@@ -53,18 +51,23 @@ const html = (todo) => `
 </li>
 `
 
+const activeCountText = (count) => `${count} item left`
+
 function showTodos(displayTodos) {
   const listHtml = []
   displayTodos.forEach((todo) => {
     if (todo.removed == false) {
-      listHtml.push(html(todo))
+      listHtml.push(todoHtml(todo))
     }
   })
 
   if (displayTodos.length > 0) {
-    document.getElementById('footer').style.display = 'block'
+    document.getElementById('footer').style.display = 'flex'
   }
   document.getElementById('display-area').innerHTML = listHtml.join('\n')
+  document.getElementById('active-todos').innerHTML = activeCountText(
+    filterTodos({ completed: false, removed: false }).length,
+  )
 }
 
 document.getElementById('form').addEventListener('submit', (e) => {
@@ -92,16 +95,28 @@ document.getElementById('display-area').addEventListener('click', (event) => {
   showTodos(todos)
 })
 
+function resetButtonStates() {
+  document.getElementById('all').classList.remove('active-button')
+  document.getElementById('active').classList.remove('active-button')
+  document.getElementById('completed').classList.remove('active-button')
+}
+
 document.getElementById('completed').addEventListener('click', (e) => {
+  resetButtonStates()
+  document.getElementById('completed').classList.add('active-button')
   const completedTodos = filterTodos({ completed: true, removed: false })
   showTodos(completedTodos)
 })
 
 document.getElementById('active').addEventListener('click', (e) => {
+  resetButtonStates()
+  document.getElementById('active').classList.add('active-button')
   const activeTodos = filterTodos({ completed: false, removed: false })
   showTodos(activeTodos)
 })
 
 document.getElementById('all').addEventListener('click', (e) => {
+  resetButtonStates()
+  document.getElementById('all').classList.add('active-button')
   showTodos(todos)
 })

@@ -21,11 +21,13 @@
       </form>
       <ul id="display-area"></ul>
       <footer id="footer" style="display: none">
-        <div class="filters">
-          <div id="all">All</div>
-          <div id="active">Active</div>
-          <div id="completed">Completed</div>
-        </div>
+        <span id="active-todos"></span>
+        <span class="filters" id="all-filters">
+          <span id="all" class="active-button">All</span>
+          <span id="active">Active</span>
+          <span id="completed">Completed</span>
+        </span>
+        <div id="empty"></div>
       </footer>
     </div>
     <script src="script.js"></script>
